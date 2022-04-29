@@ -147,7 +147,7 @@ const iconTemplate = (icon) => {
 
 	return `<div class="col">
             <div class="box">
-              <i class="${family} ${prefix}${name}"></i>
+              <i class="${family} ${prefix}${name} " style = "color: ${color}"></i>
               <span>cat</span>
             </div>
           </div>`
