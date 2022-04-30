@@ -137,8 +137,10 @@ const icons = [
 	}
 ];
 
+const  h2 = document.querySelector('h2');
 const content = document.querySelector('.content');
 content.innerHTML = '';
+
 
 const iconTemplate = (icon) => {
 
@@ -148,11 +150,53 @@ const iconTemplate = (icon) => {
 	return `<div class="col">
             <div class="box">
               <i class="${family} ${prefix}${name} " style = "color: ${color}"></i>
-              <span>cat</span>
+              <span>${name}</span>
             </div>
           </div>`
 }
 
-icons.forEach(icon => {
-	content.innerHTML += iconTemplate(icon);
-});
+
+
+document.getElementById('type').addEventListener('change', function() {
+  console.log('Value option html: ', this.value);
+
+	h2.innerHTML = '';
+	content.innerHTML = '';
+
+	if (this.value == 0) {
+
+		icons.forEach(icon => {
+			content.innerHTML += iconTemplate(icon);
+		});
+
+	}	else if(this.value == 1) {
+
+		const animalIcons = icons.filter(icon => (icon.type == 'animal'))
+		console.log(animalIcons);
+		animalIcons.forEach(icon => {
+			content.innerHTML += iconTemplate(icon);
+		});
+
+	} else if(this.value == 2) {
+
+		const vegetableIcons = icons.filter(icon => (icon.type == 'vegetable'))
+		console.log(vegetableIcons);
+		vegetableIcons.forEach(icon => {
+			content.innerHTML += iconTemplate(icon);
+		});
+
+	} else if(this.value == 3) {
+
+		const userIcons = icons.filter(icon => (icon.type == 'user'))
+		console.log(userIcons);
+		userIcons.forEach(icon => {
+			content.innerHTML += iconTemplate(icon);
+		});
+		
+	}
+
+  // il valore ottenuto lo uso come filtro per filtrare tutto l'array.
+  // ottengo quindi un nuovo array filtrato.
+  // svuoto il container
+  // stampo il nuovo array filtrato
+})
