@@ -137,9 +137,11 @@ const icons = [
 	}
 ];
 
-const  h2 = document.querySelector('h2');
+
+
 const content = document.querySelector('.content');
 content.innerHTML = '';
+generateSelect()
 
 
 const iconTemplate = (icon) => {
@@ -156,9 +158,11 @@ const iconTemplate = (icon) => {
 }
 
 
-
+// Al cambio di opzione della select scateno la funzione
 document.getElementById('type').addEventListener('change', function() {
   console.log('Value option html: ', this.value);
+
+	const  h2 = document.querySelector('h2');
 
 	h2.innerHTML = '';
 	content.innerHTML = '';
@@ -207,5 +211,47 @@ document.getElementById('type').addEventListener('change', function() {
 const randomColor = () => {
 	return '#' + Math.floor(Math.random()*16777215).toString(16).toUpperCase();
 }
-
 console.log('Colore random: ', randomColor());
+
+
+// Bonus 2
+// Funzione che genera la label e la select
+function generateSelect() {
+
+	const selectHeaderBottom = document.querySelector('.content-header-bottom');
+
+	const label = document.createElement('label');
+	label.setAttribute('for', 'type');
+	const labelText = document.createTextNode("Filtra per tipo:");
+	selectHeaderBottom.append(labelText);
+	// Style non funziona
+	// label.style.color = 'white';
+	console.log(label, labelText);
+
+  const select = document.createElement("SELECT");
+  select.setAttribute("id", "type");
+  selectHeaderBottom.append(select);
+	select.classList.add('form-select', 'my-3')
+
+  const option0 = document.createElement("option");
+  option0.setAttribute("value", "0");
+  const optionAll = document.createTextNode("All");
+  option0.append(optionAll);
+
+	const option1 = document.createElement("option");
+  option1.setAttribute("value", "1");
+  const optionAnimals = document.createTextNode("Animals");
+  option1.append(optionAnimals);
+
+	const option2 = document.createElement("option");
+  option2.setAttribute("value", "2");
+  const optionVegetables = document.createTextNode("Vegetables");
+  option2.append(optionVegetables);
+
+	const option3 = document.createElement("option");
+  option3.setAttribute("value", "3");
+  const optionUser = document.createTextNode("User");
+  option3.append(optionUser);
+
+  document.getElementById("type").append(option0, option1, option2, option3);
+}
