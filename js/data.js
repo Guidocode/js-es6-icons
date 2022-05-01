@@ -149,7 +149,7 @@ const iconTemplate = (icon) => {
 
 	return `<div class="col">
             <div class="box">
-              <i class="${family} ${prefix}${name} " style = "color: ${color}"></i>
+              <i class="${family} ${prefix}${name} " style = "color: ${randomColor()}"></i>
               <span>${name}</span>
             </div>
           </div>`
@@ -200,3 +200,12 @@ document.getElementById('type').addEventListener('change', function() {
   // svuoto il container
   // stampo il nuovo array filtrato
 })
+
+
+// Bonus 1
+// Funzione genera colore random per icone
+const randomColor = () => {
+	return '#' + Math.floor(Math.random()*16777215).toString(16).toUpperCase();
+}
+
+console.log('Colore random: ', randomColor());
